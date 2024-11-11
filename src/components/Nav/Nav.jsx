@@ -28,7 +28,7 @@ function Nav({ onSearch }) {
                                 value={searchTerm}
                                 onChange={handleSearchChange}
                                 className="block w-full p-2 text-sm md:text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 md:w-64 md:transition-width md:duration-300 md:focus:w-80"
-                                placeholder="Pesquisar por OP..."
+                                placeholder="Pesquisar OP..."
                             />
                         </div>
                         <button

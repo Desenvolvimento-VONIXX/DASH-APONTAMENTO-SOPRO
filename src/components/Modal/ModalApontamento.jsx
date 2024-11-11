@@ -11,7 +11,7 @@ function ModalApontamento({ onClose, op, produto, codProdAcabado }) {
     const [qntTotal, setQntTotal] = useState(0);
     const [qntSaldoOp, setQntSaldoOp] = useState(0);
     const [qntRealizado, setQntSaldoRealizado] = useState(0);
-    const [codUsuLog, setCodUsuLog] = useState('')
+    const [codUsuLog, setCodUsuLog] = useState('');
 
     useEffect(() => {
         const fetchUserCode = async () => {
@@ -167,7 +167,7 @@ function ModalApontamento({ onClose, op, produto, codProdAcabado }) {
 
     return (
         <>
-            <div className="fixed inset-0 bg-gray-800 bg-opacity-30 z-40" />
+            <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-40" /> 
             <div
                 id="static-modal"
                 data-modal-backdrop="static"
@@ -213,7 +213,7 @@ function ModalApontamento({ onClose, op, produto, codProdAcabado }) {
                         </div>
 
                         <div className="w-full">
-                            <FormApontamento produto={produto} op={op} codProd={codProdAcabado} codUsu={codUsuLog}/>
+                            <FormApontamento produto={produto} op={op} codProd={codProdAcabado} codUsu={codUsuLog} />
                         </div>
 
                         <div className="p-3">

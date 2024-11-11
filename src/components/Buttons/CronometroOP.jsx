@@ -57,12 +57,19 @@ function CronometroOp({ title, op, codProdAcabado }) {
     }, [dataOp]);
 
     useEffect(() => {
+        console.log(dataAtv);
         if (dataAtv && dataAtv.length > 0) {
             const item = dataAtv[0];
-            setDataInicioAtv(item.DATA_INICIO_ATV);
-            setDataFimAtv(item.DATA_FIM_ATV);
+            if (item.DATA_INICIO_ATV === null && item.DATA_FIM_ATV === null) {
+                setDataInicioAtv("A iniciar");
+                setDataFimAtv("");
+            } else {
+                setDataInicioAtv(item.DATA_INICIO_ATV);
+                setDataFimAtv(item.DATA_FIM_ATV);
+            }
         }
-    }, [dataAtv]); 
+    }, [dataAtv]);
+
 
     useEffect(() => {
         if (dataInicioOp) {
@@ -79,20 +86,20 @@ function CronometroOp({ title, op, codProdAcabado }) {
     }, [dataInicioOp]);
 
     useEffect(() => {
-        console.log("Data inicio atividade: ", dataInicioAtv)
-
-        if (dataInicioAtv) {
+        if (dataInicioAtv && dataInicioAtv !== "A iniciar") {
             const startTime = new Date(dataInicioAtv).getTime();
             const interval = setInterval(() => {
                 const currentTime = Date.now();
                 const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-
                 setTimeAtv(elapsedTime);
             }, 1000);
 
             return () => clearInterval(interval);
+        } else {
+            setTimeAtv(0); 
         }
     }, [dataInicioAtv]);
+
 
     const formatTime = (seconds) => {
         const days = Math.floor(seconds / (3600 * 24));
@@ -105,7 +112,7 @@ function CronometroOp({ title, op, codProdAcabado }) {
 
 
 
-    return ( 
+    return (
         <>
             <div className="flex flex-col gap-[2px] items-center p-6 bg-[#2C2C54] rounded-3xl shadow-lg w-full mx-auto" style={{ margin: '10px' }}>
                 <div className="flex items-center justify-center w-full sm-text-[15px] md-text-[15px] lg:text-2xl xl:text-2xl 2xl:text-2xl font-mono font-bold text-white tracking-widest bg-black bg-opacity-30 px-4 py-2 rounded-lg">
@@ -119,7 +126,7 @@ function CronometroOp({ title, op, codProdAcabado }) {
                     {formatTime(timeAtv)}
                 </div>
                 <h2 className="text-sm font-semibold text-white">Tempo Total Atividade</h2>
-                <p className="text-sm text-gray-300">Início: {dataInicioAtv ? new Date(dataInicioAtv).toLocaleString() : 'Carregando...'}</p>
+                <p className="text-sm text-gray-300">Início: {dataInicioAtv ? (dataInicioAtv === "A iniciar" ? "A iniciar" : new Date(dataInicioAtv).toLocaleString()) : 'Carregando...'}</p>
             </div>
         </>
     );

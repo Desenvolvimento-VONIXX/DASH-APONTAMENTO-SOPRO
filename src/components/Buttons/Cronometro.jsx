@@ -116,7 +116,7 @@ function Cronometro({ op }) {
                         ID: idUpdateDhfim
                     }
                 ]
-            )
+            ) 
                 .then(() => {
                     setIdUpdateDhFim('');
                     setDataIni('');
@@ -184,7 +184,7 @@ function Cronometro({ op }) {
                     >
                         <FaPause className="text-[20px]" />
                     </button>
-                ) : (
+                ) : ( 
                     <button
                         onClick={handleStartPause}
                         className="flex items-center justify-center w-10 h-10 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-md focus:outline-none focus:ring-4 focus:ring-green-300"

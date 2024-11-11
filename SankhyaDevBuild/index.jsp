@@ -21,13 +21,13 @@ window.resolveAsset = function(url)
 "<%=EntityFacadeFactory.getDWFFacade().getJdbcWrapper().getDataSource().getConnection().getMetaData().getDatabaseProductName()%>"
 </script>
 <script></script>
-<script type="module">import{injectIntoGlobalHook}from"http://192.168.1.153:5173/@react-refresh";injectIntoGlobalHook(window);window.$RefreshReg$=()=>{};window.$RefreshSig$=()=>(type)=>type</script>
-<script type="module" src="http://192.168.1.153:5173/@vite/client"></script>
+<script type="module">import{injectIntoGlobalHook}from"http://192.168.1.241:5173/@react-refresh";injectIntoGlobalHook(window);window.$RefreshReg$=()=>{};window.$RefreshSig$=()=>(type)=>type</script>
+<script type="module" src="http://192.168.1.241:5173/@vite/client"></script>
 <meta charset="UTF-8"/>
-<link rel="icon" type="image/svg+xml" href="http://192.168.1.153:5173/vite.svg"/>
+<link rel="icon" type="image/svg+xml" href="http://192.168.1.241:5173/vite.svg"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Vite + React</title>
-<script type="text/javascript">var __size__nodes = 0;var isDev = true;window.__HOST_IP__ = "http://192.168.1.153:5173";function getAttr() {
+<script type="text/javascript">var __size__nodes = 0;var isDev = true;window.__HOST_IP__ = "http://192.168.1.241:5173";function getAttr() {
   var srcNodeList = document.querySelectorAll("[src],[href]");
   if (__size__nodes < srcNodeList.length) {
     __size__nodes = srcNodeList.length;
@@ -68,6 +68,6 @@ window.resolveAsset = function(url)
 }; setInterval(getAttr, 50);</script></head>
 <body>
 <div id="root"></div>
-<script type="module" src="http://192.168.1.153:5173/src/main.jsx"></script>
+<script type="module" src="http://192.168.1.241:5173/src/main.jsx"></script>
 </body>
 </html>

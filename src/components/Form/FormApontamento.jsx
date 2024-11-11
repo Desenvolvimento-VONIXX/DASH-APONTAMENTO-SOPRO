@@ -33,7 +33,7 @@ function FormApontamento({ produto, op, codProd, codUsu }) {
         setIsLoading(true);
 
         JX.salvar(
-            {
+            { 
                 IDIPROC: op,
                 QTD: quantity,
                 CODUSU: codUsu,

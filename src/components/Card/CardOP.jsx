@@ -34,7 +34,7 @@ function CardOP({ searchTerm }) {
             AND OPE.STATUSPROC NOT IN ('S','F','C')
             AND IPA.CODPRODPA IN (4105192,3001016,3001015)
             AND EFX.DESCRICAO = 'FINALIZAÇÃO'
-            ORDER BY DHINICIO DESC
+            ORDER BY OPE.DHINST DESC
         `;
         setConsulta(novaConsulta);
     }, []);
