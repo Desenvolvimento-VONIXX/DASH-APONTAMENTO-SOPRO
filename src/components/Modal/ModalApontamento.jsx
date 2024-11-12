@@ -31,7 +31,7 @@ function ModalApontamento({ onClose, op, produto, codProdAcabado }) {
         fetchUserCode();
     }, []);
 
-
+ 
     useEffect(() => {
         const novaConsulta = `
             SELECT 
@@ -128,6 +128,9 @@ function ModalApontamento({ onClose, op, produto, codProdAcabado }) {
         setConsultaResumoApt(novaConsulta);
     }, [op, codProdAcabado]);
 
+    const atualizarApontamentos = () => {
+        setConsultaApontamentos(prev => `${prev} `);
+    };
 
     const { data: dataApontamentos, loading: loadingApontamentos, error: errorApontamentos } = useConsultar(consultaApontamentos);
     const { data: dataResumoApt, loading: loadingResumoApt, error: errorResumoApt } = useConsultar(consultaResumoApt);
@@ -213,9 +216,9 @@ function ModalApontamento({ onClose, op, produto, codProdAcabado }) {
                         </div>
 
                         <div className="w-full">
-                            <FormApontamento produto={produto} op={op} codProd={codProdAcabado} codUsu={codUsuLog} />
+                            <FormApontamento produto={produto} op={op} codProd={codProdAcabado} codUsu={codUsuLog} onSuccess={atualizarApontamentos}/>
                         </div>
-
+ 
                         <div className="p-3">
                             {loadingApontamentos ? (
                                 <div className="flex justify-center py-4">
@@ -225,12 +228,12 @@ function ModalApontamento({ onClose, op, produto, codProdAcabado }) {
                                 <div>
                                     <div className="flex space-x-4 justify-between">
                                         <h1 className="text-white font-bold mb-2">Apontamentos Realizados:</h1>
-                                        <div className="text-[13px] text-white">
+                                        {/* <div className="text-[13px] text-white">
                                             <h1>Resumo:</h1>
                                             <p>Qnt Total: <span className="font-bold">{qntTotal.toLocaleString('pt-BR')}</span></p>
                                             <p>Qnt Apontamento: <span className="font-bold">{qntRealizado.toLocaleString('pt-BR')}</span></p>
                                             <p>Qnt Saldo OP: <span className="font-bold">{qntSaldoOp.toLocaleString('pt-BR')}</span></p>
-                                        </div>
+                                        </div> */}
 
                                     </div>
                                     <div className="relative overflow-x-auto shadow-md rounded-lg p-4">

@@ -8,6 +8,7 @@ import ModalConfirmaIniciar from "./ConfirmaIniciar";
 import ModalConfirmaFinalizar from "./ConfirmaFinalizar";
 import TablePrducaoLinhas from "../Table/TableLinhas";
 import { JX } from "../../lib/JX";
+import Resumo from "../Div/divResumo";
 
 function ModalCronometro({ onClose, op, produto, codProdAcabado }) {
     const [showModal, setShowModal] = useState(false);
@@ -59,7 +60,11 @@ function ModalCronometro({ onClose, op, produto, codProdAcabado }) {
             <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
                 <div className="w-full h-full bg-gray-700 rounded-lg shadow p-4 md:p-5 overflow-y-auto">
                     <div className="flex items-center justify-between border-b border-gray-600 pb-4">
-                        <h3 className="text-xl font-semibold text-white">OP - {op}</h3>
+
+                        <div className="flex items-center pb-4 space-x-2">
+                            <h3 className="text-xl font-semibold text-white flex-shrink-0 mr-10">OP - {op}</h3>
+                            <Resumo op={op} codProdAcabado={codProdAcabado} />
+                        </div>
                         <div className="flex space-x-1">
                             <button
                                 type="button"
@@ -112,7 +117,7 @@ function ModalCronometro({ onClose, op, produto, codProdAcabado }) {
                     op={op}
                     produto={produto}
                     codProdAcabado={codProdAcabado}
-                    
+
                 />
             )}
 

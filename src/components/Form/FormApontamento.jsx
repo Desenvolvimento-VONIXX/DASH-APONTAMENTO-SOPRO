@@ -5,7 +5,7 @@ import ModalSuccess from "../Modal/ModalSuccess";
 import ModalError from "../Modal/ModalError";
 import Snipper from "../Snipper";
 
-function FormApontamento({ produto, op, codProd, codUsu }) {
+function FormApontamento({ produto, op, codProd, codUsu, onSuccess }) {
     const [isOpen, setIsOpen] = useState(false);
     const [quantity, setQuantity] = useState(0);
     const [isLastEntry, setIsLastEntry] = useState(false);
@@ -14,7 +14,7 @@ function FormApontamento({ produto, op, codProd, codUsu }) {
     const [isModalError, setIsModalErrorOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    const getCurrentDate = () => {
+    const getCurrentDate = () => { 
         const date = new Date();
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -51,6 +51,7 @@ function FormApontamento({ produto, op, codProd, codUsu }) {
             } else {
                 setQuantity(0);
                 setIsModalSuccessOpen(true);
+                if (onSuccess) onSuccess();
             }
         })
             .catch(function (error) {
@@ -89,9 +90,6 @@ function FormApontamento({ produto, op, codProd, codUsu }) {
                     {isLoading ? "APONTANDO, AGUARDE..." : "APONTAR"} 
                 </button>
             </div>
-
-
-
 
 
             {isModalSuccess && (

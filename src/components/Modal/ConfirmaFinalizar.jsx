@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { JX } from "../../lib/JX";
-import ModalSuccess from "../Modal/ModalSuccess";
+import ModalSuccessFinalizar from "../Modal/ModalSuccessFinalizar";
 import ModalError from "../Modal/ModalError";
 import Snipper from "../Snipper";
 
@@ -14,7 +14,7 @@ function ModalConfirmaFinalizar({ onClose, op, produto, codProdAcabado }) {
     const getCurrentDate = () => {
         const date = new Date();
         const day = `0${date.getDate()}`.slice(-2);
-        const month = `0${date.getMonth() + 1}`.slice(-2);
+        const month = `0${date.getMonth() + 1}`.slice(-2); 
         const year = date.getFullYear();
         const hours = `0${date.getHours()}`.slice(-2);
         const minutes = `0${date.getMinutes()}`.slice(-2);
@@ -51,7 +51,7 @@ function ModalConfirmaFinalizar({ onClose, op, produto, codProdAcabado }) {
                 setIsLoading(false);
                 const response = data[0] || {};  
                 if (response.status === "0") {
-                    setIsModalErrorOpen(true);
+                    setIsModalErrorOpen(true); 
                     setErro(response.statusMessage);  
                 } else {
                     setIsModalSuccessOpen(true);
@@ -89,7 +89,7 @@ function ModalConfirmaFinalizar({ onClose, op, produto, codProdAcabado }) {
             </div>
 
             {isModalSuccess && (
-                <ModalSuccess
+                <ModalSuccessFinalizar
                     onClose={() => setIsModalSuccessOpen(false)}
                     mensagemSuccess={'Finalizado com Sucesso.'}
                 />

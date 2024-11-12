@@ -5,7 +5,7 @@ import { useConsultar } from "../../../hook/useConsultar";
 import Snipper from "../Snipper";
 import ModalCronometro from "../Modal/ModalCronometro";
 
-function CardOP({ searchTerm }) {
+function CardOP({ searchTerm, selectedMachine }) {
     const [showModal, setShowModal] = useState(false);
     const [showModal1, setShowModal1] = useState(false);
     const [consulta, setConsulta] = useState('');
@@ -34,9 +34,18 @@ function CardOP({ searchTerm }) {
             AND OPE.STATUSPROC NOT IN ('S','F','C')
             AND IPA.CODPRODPA IN (4105192,3001016,3001015)
             AND EFX.DESCRICAO = 'FINALIZAÇÃO'
+            ${selectedMachine ? `AND OPE.AD_MAQUINA = ${selectedMachine}` : ''}
             ORDER BY OPE.DHINST DESC
         `;
         setConsulta(novaConsulta);
+    }, [selectedMachine]);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setConsulta(prev => `${prev} `); 
+        }, 300000); 
+
+        return () => clearInterval(intervalId); 
     }, []);
 
     const { data, loading, error } = useConsultar(consulta);
@@ -55,7 +64,7 @@ function CardOP({ searchTerm }) {
         }
     }, [data]);
 
-    const filteredResults = result.filter(item => 
+    const filteredResults = result.filter(item =>
         item.op.toString().includes(searchTerm)
     );
 

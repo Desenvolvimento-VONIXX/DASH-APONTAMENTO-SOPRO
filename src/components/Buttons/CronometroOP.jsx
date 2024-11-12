@@ -110,6 +110,15 @@ function CronometroOp({ title, op, codProdAcabado }) {
         return `${String(days).padStart(2, '0')}d:${String(hours).padStart(2, '0')}h:${String(minutes).padStart(2, '0')}m:${String(secs).padStart(2, '0')}s`;
     };
 
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setConsultaPeriodoAtv(prev => `${prev} `);
+            setConsultaPeriodoOp(prev => `${prev} `);
+        }, 2000); 
+
+        return () => clearInterval(intervalId);
+    }, []);
+
 
 
     return (

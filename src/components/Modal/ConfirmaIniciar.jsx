@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { JX } from "../../lib/JX";
-import ModalSuccess from "../Modal/ModalSuccess";
+import ModalSuccessIniciar from "../Modal/ModalSucessoIniciar";
 import ModalError from "../Modal/ModalError";
 import Snipper from "../Snipper";
 
@@ -11,7 +11,7 @@ function ModalConfirmaIniciar({ onClose, op, produto, codProdAcabado, codUsuLog 
     const [erro, setErro] = useState('');
 
 
-    const getCurrentDate = () => { 
+    const getCurrentDate = () => {
 
         const date = new Date();
         const day = `0${date.getDate()}`.slice(-2);
@@ -22,14 +22,14 @@ function ModalConfirmaIniciar({ onClose, op, produto, codProdAcabado, codUsuLog 
         const seconds = `0${date.getSeconds()}`.slice(-2);
 
         return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-    }; 
+    };
 
     const handleSubmit = (e) => {
-   
+
         setIsLoading(true);
 
         JX.salvar(
-            { 
+            {
                 OP: op,
                 CODUSU: codUsuLog,
                 DHINICIAL: getCurrentDate()
@@ -64,26 +64,36 @@ function ModalConfirmaIniciar({ onClose, op, produto, codProdAcabado, codUsuLog 
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
                             <h3 class="mb-5 text-lg font-bold text-gray-400">Você tem certeza que deseja Iniciar?</h3>
-                            <button data-modal-hide="popup-modal" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+                            <button
+                                data-modal-hide="popup-modal"
+                                type="button"
+                                className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
                                 onClick={handleSubmit}
                                 disabled={isLoading}
-
                             >
-                                {isLoading && <Snipper className="p-5" />}
-                                {isLoading ? "Iniciando, Aguarde..." : "Iniciar"}
-
+                                {isLoading ? (
+                                    <>
+                                        <Snipper className="p-5" />
+                                        Iniciando, Aguarde...
+                                    </>
+                                ) : (
+                                    "Iniciar"
+                                )}
                             </button>
+
                             <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none  rounded-lg border  focus:z-10 focus:ring-4 focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 dark:hover:text-white hover:bg-gray-700" onClick={onClose}>Cancelar</button>
                         </div>
                     </div>
                 </div>
             </div>
             {isModalSuccess && (
-                <ModalSuccess
-                    onClose={() => setIsModalSuccessOpen(false)}
+                <ModalSuccessIniciar
+                    onCloseSuccess={() => setIsModalSuccessOpen(false)}
+                    onCloseConfirma={onClose} // Fecha o modal de confirmação também
                     mensagemSuccess={'Iniciado com Sucesso.'}
                 />
             )}
+
 
             {isModalError && (
                 <ModalError

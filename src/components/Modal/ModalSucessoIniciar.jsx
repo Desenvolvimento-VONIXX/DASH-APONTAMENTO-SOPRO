@@ -1,9 +1,9 @@
 import { FaCheckCircle } from "react-icons/fa";
 
-function ModalSuccess({ onCloseSuccess, mensagemSuccess }) {
-    const handleReload = () => {
-        onCloseSuccess();
-        // window.location.reload(); // caso queira recarregar a página
+function ModalSuccessIniciar({ onCloseSuccess, onCloseConfirma, mensagemSuccess }) {
+    const handleOkClick = () => {
+        onCloseSuccess();  // Fecha o modal de sucesso
+        onCloseConfirma(); // Fecha o modal de confirmação
     };
 
     return ( 
@@ -27,7 +27,7 @@ function ModalSuccess({ onCloseSuccess, mensagemSuccess }) {
                             data-modal-hide="popup-modal"
                             type="button"
                             className="py-2.5 px-5 ms-3 text-sm font-medium focus:outline-none rounded-lg border focus:z-10 focus:ring-4 focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700"
-                            onClick={handleReload}
+                            onClick={handleOkClick}  
                         >
                             OK
                         </button>
@@ -38,4 +38,4 @@ function ModalSuccess({ onCloseSuccess, mensagemSuccess }) {
     );
 }
 
-export default ModalSuccess;
+export default ModalSuccessIniciar;

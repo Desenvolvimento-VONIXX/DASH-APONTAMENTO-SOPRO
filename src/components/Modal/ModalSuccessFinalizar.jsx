@@ -1,9 +1,9 @@
 import { FaCheckCircle } from "react-icons/fa";
 
-function ModalSuccess({ onCloseSuccess, mensagemSuccess }) {
+function ModalSuccessFinalizar({ onClose, mensagemSuccess }) {
     const handleReload = () => {
-        onCloseSuccess();
-        // window.location.reload(); // caso queira recarregar a página
+        onClose();
+        window.location.reload(); 
     };
 
     return ( 
@@ -38,4 +38,4 @@ function ModalSuccess({ onCloseSuccess, mensagemSuccess }) {
     );
 }
 
-export default ModalSuccess;
+export default ModalSuccessFinalizar;
