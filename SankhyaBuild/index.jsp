@@ -25,7 +25,7 @@ window.resolveAsset = function(url)
 <link rel="icon" type="image/svg+xml" href=${BASE_FOLDER}/vite.svg />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Vite + React</title>
-<script type="module" crossorigin src="${BASE_FOLDER}/assets/index-JhLeF11N.js"></script>
+<script type="module" crossorigin src="${BASE_FOLDER}/assets/index-AQhT9pY6.js"></script>
 <link rel="stylesheet" crossorigin href="${BASE_FOLDER}/assets/index-BW5o3nzB.css">
 </head>
 <body>

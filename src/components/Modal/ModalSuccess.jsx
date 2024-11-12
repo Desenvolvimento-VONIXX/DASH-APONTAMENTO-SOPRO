@@ -9,7 +9,7 @@ function ModalSuccess({ onCloseSuccess, mensagemSuccess }) {
     return ( 
         <div
             id="popup-modal"
-            tabIndex="-1"
+            tabIndex="-1" 
             className="rounded-lg fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden top-0 right-0 left-0 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
         >
             <div className="relative p-4 w-full max-w-md max-h-full">

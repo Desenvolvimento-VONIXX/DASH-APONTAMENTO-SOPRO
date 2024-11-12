@@ -94,7 +94,7 @@ function FormApontamento({ produto, op, codProd, codUsu, onSuccess }) {
 
             {isModalSuccess && (
                 <ModalSuccess
-                    onClose={() => setIsModalSuccessOpen(false)}
+                onCloseSuccess={() => setIsModalSuccessOpen(false)}
                     mensagemSuccess={'Apontamento Realizado.'}
                 />
             )}
